@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<title>Inflation Desht Lab</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css">
+<style>
+    html,body {font-family:"Gotham"}
+    .container {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 10px;
+        border: solid 0px;
+        border-color: lightgray;
+        height: 100%
+    }
+    th{
+        text-align-last: left;
+    }
+</style>
+<script src=""></script>
+<body>
+
+<div class="container">
+ <h1>Анализ инфляции Казахстана</h1>
+ <p>Источник данных: <a href = "https://taldau.stat.gov.kz/ru/NewIndex/GetIndex/703076">Индекс потребительских цен БНС</a><br>
+   
+    Соотнесение периодов: отчетный период к предыдущему периоду <br>
+    Количество категорий потребительских товаров: 168 <br>
+    Период: Январь 2011 - Май 2024<br>
+    <br>
+    Подготовка данных: 
+    <li>Категории потребительских товаров разложены по иерархии в Талдау</li>
+    <li>Найден самый нижний уровень в каждой ветке</li>
+    <li>"Дырявые" временные ряды заменены более высоким рядом по иерархии, а ряды, которые находились на одном уровне, удалены, чтобы исключить double counting</li></p>
+        
+    <h2>CMGR - Тренды инфляции <i>(последние 120 месяцев)</i></h2>
+    <p>CMGR <i>(Compound Monthly Growth Rate)</i> используется для измерения среднего ежемесячного роста или снижения значения в течение определенного периода времени. </p>
+ 
+<p>Топ 10 самых низких CMGR:</p>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Категория</th>
+            <th>CMGR</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Телефонное и факсимильное оборудование</td>
+            <td>0.12</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Услуги телефонной и факсимильной связи</td>
+            <td>0.22</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Почтовые услуги</td>
+            <td>0.24</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Прочие финансовые услуги, не отнесенные к другим категориям</td>
+            <td>0.26</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Картофель</td>
+            <td>0.27</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Газ</td>
+            <td>0.30</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Овощи свежие</td>
+            <td>0.38</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Проезд городским автобусом</td>
+            <td>0.41</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Проживание в гостинице</td>
+            <td>0.44</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Дошкольное и начальное образование</td>
+            <td>0.46</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<p>Топ 10 самых высоких CMGR:</p>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Категория</th>
+            <th>CMGR</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Мыло хозяйственное</td>
+            <td>1.28</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Масло оливковое</td>
+            <td>1.23</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Фрукты консервированные</td>
+            <td>1.22</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Велосипед детский</td>
+            <td>1.19</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Детская обувь</td>
+            <td>1.18</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Сигареты</td>
+            <td>1.14</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Молоко консервированное</td>
+            <td>1.11</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Полуфабрикаты для изготовления напитков на основе какао</td>
+            <td>1.11</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Напитки газированные</td>
+            <td>1.08</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Чай зеленый</td>
+            <td>1.07</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<iframe src="https://murla.pythonanywhere.com/" width="100%" height="1970" style="border:none;zoom:0.75;" ></iframe>
+<h2>Пространство инфляции на основе корреляции</h2>
+<p>Ниже представлено пространство инфляции Казахстана, на основе корреляции временых рядов инфляции.
+    Каждый круг - это категория инфляции.
+    Линии между кругами означают наличие связи, т. е. насколько 2 категории коррелируют. Для визуального удобства мы оставили только самые значимые связи.
+    Исследуйте самостоятельно расположение инфляции в пространстве.</p>
+<iframe src="https://desht-lab.github.io/Inflation" width="100%" height="850" style="border:none;"></iframe>
+</div>
+</body>
+</html>
